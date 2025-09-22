@@ -7,9 +7,16 @@ def index():
     if request.method == "GET":
         return render_template("index.html")
     else:
-        login_id=request.form['Loginid']
-        login_pw=request.form['password']
-        return f"id: {login_id}, pw: {login_pw}"
+        name=request.form['name']
+        emailaddress=request.form['emailaddress']
+        image_list = ['abc.png','abc.png','abc.png']
+
+        data = {
+            'name': name,
+            'email': emailaddress,
+            'images': image_list
+        }
+        return render_template("index.html", context=data)
 
 @app.route("/info")
 def information():
